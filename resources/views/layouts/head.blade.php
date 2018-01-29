@@ -7,6 +7,7 @@
         @yield('title')
     </title>  <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <link rel="stylesheet" href="{{asset('plugins/iCheck/all.css')}}">
   <!-- Bootstrap 3.3.7 -->
   <link rel="stylesheet" href="{{asset('bower_components/bootstrap/dist/css/bootstrap.min.css')}}">
   <!-- Font Awesome -->
@@ -81,7 +82,7 @@
                   <a href="{{url('change-password')}}" class="btn btn-default btn-flat">Ganti Sandi</a>
                 </div>
                 <div class="pull-right">
-                  <a href="{{url('logout')}}" class="btn btn-default btn-flat">Keluar</a>
+                  <a href="{{ route('logout') }}" class="btn btn-default btn-flat">Keluar</a>
                 </div>
               </li>
             </ul>

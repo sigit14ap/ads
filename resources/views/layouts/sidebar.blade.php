@@ -14,8 +14,9 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
+        @if(Auth::user()->level == "admin")
         <li>
-          <a href="{{url('/test-management')}}">
+          <a href="/">
             <i class="fa fa-book"></i> <span>Daftar Ujian</span>
           </a>
         </li>
@@ -59,6 +60,7 @@
             <i class="fa fa-flag-o"></i> <span>Credits</span>
           </a>
         </li>
+        @endif
       </ul>
     </section>
     <!-- /.sidebar -->

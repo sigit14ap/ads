@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Auth::routes();
@@ -21,4 +21,10 @@ Route::group(['middleware' => 'IsAdmin'], function () {
     	return view('admin.index');
 	});
  });
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['middleware' => 'IsSatker'], function () {
+	Route::get('/satker', function () {
+    	return view('satker.index');
+	});
+});
+
+Route::get('/logout', 'Auth\LoginController@logout')->name('logout');

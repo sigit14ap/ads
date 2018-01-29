@@ -26,13 +26,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    if (Auth::guard($guard)->check() && Auth::user()->level == "admin") {
-        protected $redirectTo = '/admin';
-    }elseif (Auth::guard($guard)->check() && Auth::user()->level == "pusat") {
-        protected $redirectTo = '/pusat';
-    }elseif (Auth::guard($guard)->check() && Auth::user()->level == "satker") {
-        protected $redirectTo = '/satker';
-    }
+    protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -42,5 +36,14 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    public function logout()
+    {
+        if(!Auth::check()){
+            return redirect('/login');
+        }
+        $logout = Auth::logout();
+        return redirect('/');
     }
 }
