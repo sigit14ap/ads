@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -25,7 +26,13 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    if (Auth::guard($guard)->check() && Auth::user()->level == "admin") {
+        protected $redirectTo = '/admin';
+    }elseif (Auth::guard($guard)->check() && Auth::user()->level == "pusat") {
+        protected $redirectTo = '/pusat';
+    }elseif (Auth::guard($guard)->check() && Auth::user()->level == "satker") {
+        protected $redirectTo = '/satker';
+    }
 
     /**
      * Create a new controller instance.
