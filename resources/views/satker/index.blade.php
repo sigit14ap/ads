@@ -37,6 +37,8 @@
                 <div class="row">
         <div class="col-xs-12">
           <div class="box">
+            <form method="POST" action="{{ route('store') }}">
+              {{ csrf_field() }}
               @for($i=1;$i<=60;$i++)
 
               <div class="form-group">
@@ -44,25 +46,27 @@
                   {{$i}}.&nbsp;&nbsp;&nbsp;
                 </label>
                 <label>
-                  <input type="radio" name="jawaban_{{$i}}" class="flat-red" checked>
+                  <input type="radio" value="A" name="jawaban_{{$i}}" class="flat-red" checked>
                   A
                 </label>&nbsp;&nbsp;&nbsp;
                 <label>
-                  <input type="radio" name="jawaban_{{$i}}" class="flat-red">
+                  <input type="radio" value="B" name="jawaban_{{$i}}" class="flat-red">
                   B
                 </label>&nbsp;&nbsp;&nbsp;
                 <label>
-                  <input type="radio" name="jawaban_{{$i}}" class="flat-red">
+                  <input type="radio" value="C" name="jawaban_{{$i}}" class="flat-red">
                   C
                 </label>&nbsp;&nbsp;&nbsp;
                 <label>
-                  <input type="radio" name="jawaban_{{$i}}" class="flat-red">
+                  <input type="radio" value="D" name="jawaban_{{$i}}" class="flat-red">
                   D
                 </label>&nbsp;&nbsp;&nbsp;
 
               </div>
               @endfor
               <hr>
+            <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+          </form>
             </div>
           </div>
           <!-- /.box -->
